@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function MainCard() {
   return (
-    <div className="w-4/5 h-max bg-orange-300 rounded-[32rem] flex flex-col items-center">
+    <div className="relative z-20 w-4/5 h-max bg-[#D2B48C] rounded-[32rem] flex flex-col items-center">
       <div className="relative bottom-[12rem] left-[4rem]">
         <Image
-          src={"/cup2.svg"}
+          src={"/cup.svg"}
           height={306}
           width={431}
           alt="Illustration of a coffee cup"

@@ -1,30 +1,135 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
-
 import Image from "next/image";
+import { use, useEffect, useState, SVGProps } from "react";
+
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useAnimate,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
+
+import { interpolate } from "flubber";
+import { SubTitleFont } from "../_components/fonts";
+
+const waveColors = ["#3E2723", "#D3BFA7", "#E5D4BA"];
 
 export default function LoadingPage() {
   const [loading, setLoading] = useState(true);
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
-  } , []);
-
-  if (!loading) {
-    return null;
-  }
+    }, 5000);
+  }, []);
 
   return (
-    <div className="absolute w-screen h-screen  overflow-clip z-50 bg-white">
-        <div className="flex w-full h-full justify-center items-center z-10">
-            <Image src={"/cup.svg"} height={184} width={261} alt="Illustration of a coffee cup"/>
-        </div>
-        <div className="absolute top-1/4 left-0 h-full w-full -z-10">
-            <Image src={"/waves.svg"} fill alt="Illustration of waves"/>
-        </div>
-    </div>
+    <AnimatePresence>
+      {loading && (
+        <motion.div
+          className="z-50 absolute w-screen h-screen overflow-clip bg-[#F5F5DC] "
+          key="loadingPage"
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 1 }}
+        >
+          <motion.div
+            className="z-20 absolute flex w-full h-full justify-center items-center text-[#C68E17] "
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <SubTitleFont className="text-lg md:text-xl lg:text-2xl ml-2">
+              CAFFEINATING
+            </SubTitleFont>
+
+            <Progress from={0} to={100} />
+          </motion.div>
+          <motion.div
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }}
+          >
+            <motion.div
+              className="z-10 absolute top-3/4 flex w-full h-full flex-col items-start"
+              initial={{ y: "20%" }}
+              animate={{ y: "-120%" }}
+              transition={{ duration: 5, ease: "linear" }}
+            >
+              <SvgWaveComponent />
+              <svg
+                viewBox="0 10 1440 320"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ overflow: "visible" }}
+              >
+                <motion.rect
+                  x="0"
+                  y="0"
+                  width="1440"
+                  height="600vh"
+                  fill={waveColors[0]}
+                ></motion.rect>
+              </svg>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+const SvgWaveComponent = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    id="svg"
+    viewBox="0 0 1440 390"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <style>
+      {'.path-0{animation:pathAnim-0 5s; animation-timing-function: linear;animation-iteration-count: infinite;}@keyframes pathAnim-0{0%{d: path("M 0,400 L 0,150 C 102.53571428571428,117.14285714285714 205.07142857142856,84.28571428571429 321,83 C 436.92857142857144,81.71428571428571 566.2499999999999,112 700,144 C 833.7500000000001,176 971.9285714285716,209.71428571428572 1096,211 C 1220.0714285714284,212.28571428571428 1330.0357142857142,181.14285714285714 1440,150 L 1440,400 L 0,400 Z");}25%{d: path("M 0,400 L 0,150 C 125.67857142857142,158.60714285714286 251.35714285714283,167.21428571428572 356,151 C 460.64285714285717,134.78571428571428 544.25,93.74999999999997 658,94 C 771.75,94.25000000000003 915.6428571428571,135.7857142857143 1051,152 C 1186.357142857143,168.2142857142857 1313.1785714285716,159.10714285714283 1440,150 L 1440,400 L 0,400 Z");}50%{d: path("M 0,400 L 0,150 C 96.21428571428572,117.10714285714286 192.42857142857144,84.21428571428571 313,82 C 433.57142857142856,79.78571428571429 578.5,108.24999999999999 725,118 C 871.5,127.75000000000001 1019.5714285714287,118.78571428571428 1139,121 C 1258.4285714285713,123.21428571428572 1349.2142857142858,136.60714285714286 1440,150 L 1440,400 L 0,400 Z");}75%{d: path("M 0,400 L 0,150 C 135.92857142857144,145.03571428571428 271.8571428571429,140.07142857142856 393,128 C 514.1428571428571,115.92857142857143 620.5000000000001,96.74999999999999 743,96 C 865.4999999999999,95.25000000000001 1004.1428571428571,112.92857142857144 1123,125 C 1241.857142857143,137.07142857142856 1340.9285714285716,143.53571428571428 1440,150 L 1440,400 L 0,400 Z");}100%{d: path("M 0,400 L 0,150 C 102.53571428571428,117.14285714285714 205.07142857142856,84.28571428571429 321,83 C 436.92857142857144,81.71428571428571 566.2499999999999,112 700,144 C 833.7500000000001,176 971.9285714285716,209.71428571428572 1096,211 C 1220.0714285714284,212.28571428571428 1330.0357142857142,181.14285714285714 1440,150 L 1440,400 L 0,400 Z");}}' +
+        '.path-1{animation:pathAnim-1 5s; animation-timing-function: linear;animation-iteration-count: infinite;}@keyframes pathAnim-1{0%{d: path("M 0,500 L 0,250 C 102.53571428571428,217.14285714285714 205.07142857142856,184.28571428571429 321,183 C 436.92857142857144,181.71428571428571 566.2499999999999,212 700,244 C 833.7500000000001,276 971.9285714285716,309.71428571428572 1096,311 C 1220.0714285714284,312.28571428571428 1330.0357142857142,281.14285714285714 1440,250 L 1440,500 L 0,500 Z");}25%{d: path("M 0,500 L 0,250 C 125.67857142857142,258.60714285714286 251.35714285714283,267.21428571428572 356,251 C 460.64285714285717,234.78571428571428 544.25,193.74999999999997 658,194 C 771.75,194.25000000000003 915.6428571428571,235.7857142857143 1051,252 C 1186.357142857143,268.2142857142857 1313.1785714285716,259.10714285714283 1440,250 L 1440,500 L 0,500 Z");}50%{d: path("M 0,500 L 0,250 C 96.21428571428572,217.10714285714286 192.42857142857144,184.21428571428571 313,182 C 433.57142857142856,179.78571428571429 578.5,208.24999999999999 725,218 C 871.5,227.75000000000001 1019.5714285714287,218.78571428571428 1139,221 C 1258.4285714285713,223.21428571428572 1349.2142857142858,236.60714285714286 1440,250 L 1440,500 L 0,500 Z");}75%{d: path("M 0,500 L 0,250 C 135.92857142857144,245.03571428571428 271.8571428571429,240.07142857142856 393,228 C 514.1428571428571,215.92857142857143 620.5000000000001,196.74999999999999 743,196 C 865.4999999999999,195.25000000000001 1004.1428571428571,212.92857142857144 1123,225 C 1241.857142857143,237.07142857142856 1340.9285714285716,243.53571428571428 1440,250 L 1440,500 L 0,500 Z");}100%{d: path("M 0,500 L 0,250 C 102.53571428571428,217.14285714285714 205.07142857142856,184.28571428571429 321,183 C 436.92857142857144,181.71428571428571 566.2499999999999,212 700,244 C 833.7500000000001,276 971.9285714285716,309.71428571428572 1096,311 C 1220.0714285714284,312.28571428571428 1330.0357142857142,281.14285714285714 1440,250 L 1440,500 L 0,500 Z");}}'}
+    </style>
+    <g>
+      <path
+        d="M 0,400 L 0,150 C 102.53571428571428,117.14285714285714 205.07142857142856,84.28571428571429 321,83 C 436.92857142857144,81.71428571428571 566.2499999999999,112 700,144 C 833.7500000000001,176 971.9285714285716,209.71428571428572 1096,211 C 1220.0714285714284,212.28571428571428 1330.0357142857142,181.14285714285714 1440,150 L 1440,400 L 0,400 Z"
+        stroke={waveColors[2]}
+        strokeWidth="2"
+        fill={waveColors[1]}
+        className="transition-all duration-300 ease-in-out delay-150 path-0"
+      />
+      <path
+        d="M 0,500 L 0,250 C 102.53571428571428,217.14285714285714 205.07142857142856,184.28571428571429 321,183 C 436.92857142857144,181.71428571428571 566.2499999999999,212 700,244 C 833.7500000000001,276 971.9285714285716,309.71428571428572 1096,311 C 1220.0714285714284,312.28571428571428 1330.0357142857142,281.14285714285714 1440,250 L 1440,500 L 0,500 Z"
+        stroke="none"
+        fill={waveColors[0]}
+        className="transition-all duration-300 ease-in-out delay-150 path-1"
+      />
+    </g>
+  </svg>
+);
+
+function Progress({ from, to }: { from: number; to: number }) {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    const controls = animate(from, to, {
+      duration: 3.5,
+      ease: "linear",
+      delay: 0.5,
+      onUpdate: (latest) => {
+        scope.current.textContent = `${Math.round(latest)}%`;
+      },
+    });
+
+    return () => controls.stop();
+  }, [scope]);
+
+  return (
+    <SubTitleFont>
+      <span
+        ref={scope}
+        className="text-xl md:text-2xl lg:text-3xl w-8 inline-block m-2 text-right"
+      />
+    </SubTitleFont>
   );
 }

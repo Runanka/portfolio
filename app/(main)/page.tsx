@@ -5,13 +5,11 @@ import MainCard from "./maincard/mainCard";
 
 export default function MyApp() {
   return (
-    <div>
+    <div className="z-0 w-screen h-screen">
       <LoadingPage />
-      <div className="absolute w-screen h-screen z-10 flex flex-col items-center overflow-scroll">
-        <Coffeewave />
-        <HomePage />
-        <MainCard />
-      </div>
+      <Coffeewave />
+      {/* <HomePage />
+      <MainCard /> */}
     </div>
   );
 }
