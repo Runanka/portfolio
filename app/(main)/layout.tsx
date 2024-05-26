@@ -5,5 +5,5 @@ export default function MainPageLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="bg-[#F5F5DC]">{children}</div>;
+  return <div >{children}</div>;
 }
