@@ -127,7 +127,7 @@ function Progress({ from, to }: { from: number; to: number }) {
     });
 
     return () => controls.stop();
-  }, [scope]);
+  });
 
   return (
     <SubTitleFont>

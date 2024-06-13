@@ -1,8 +1,10 @@
+import React from "react";
+
 import { cn } from "@/lib/utils";
 
-import { La_Belle_Aurore, Vesper_Libre } from "next/font/google";
+import { Gabriela, Sixtyfour, Patua_One } from "next/font/google";
 
-const titleFont = La_Belle_Aurore({
+const titleFont = Sixtyfour({
   subsets: ["latin"],
   weight: "400",
 });
@@ -20,7 +22,7 @@ const TitleFont = ({ children, className, ...props }: TitleFontProps) => {
   );
 };
 
-const subTitleFont = Vesper_Libre({
+const subTitleFont = Patua_One({
   subsets: ["latin"],
   weight: "400",
 });
