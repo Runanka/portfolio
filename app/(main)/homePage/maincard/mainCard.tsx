@@ -21,7 +21,7 @@ export default function MainCard() {
       transition={{ duration: 0.5, ease: "easeInOut", delay: 1.5 }}
       className="z-20 relative w-[90vw] max-w-[100rem]  h-full bg-[#D2B48C]  flex flex-col items-center "
       style={{
-        marginBottom: "calc(80wh)",
+        marginBottom: "calc(80vw)",
       }}
     >
       <div className="absolute w-full -translate-y-[99%]">
