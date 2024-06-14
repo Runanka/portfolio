@@ -2,7 +2,7 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Gabriela, Sixtyfour, Patua_One } from "next/font/google";
+import { Sixtyfour, Patua_One } from "next/font/google";
 
 const titleFont = Sixtyfour({
   subsets: ["latin"],

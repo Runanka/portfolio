@@ -6,8 +6,6 @@ import Work from "./_components/work";
 import { CharacterHead } from "./_components/characterhead";
 import Image from "next/image";
 
-//bg-[#f4a460] bg-[#f5deb3]n
-
 export default function MainCard() {
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -22,6 +20,9 @@ export default function MainCard() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeInOut", delay: 1.5 }}
       className="z-20 relative w-[90vw] max-w-[100rem]  h-full bg-[#D2B48C]  flex flex-col items-center "
+      style={{
+        marginBottom: "calc(80wh)",
+      }}
     >
       <div className="absolute w-full -translate-y-[99%]">
         <CharacterHead />

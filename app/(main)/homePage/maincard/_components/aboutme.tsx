@@ -3,20 +3,20 @@ import Image from "next/image";
 
 export default function AboutMe() {
   return (
-    <div className="w-full h-svh flex items-center justify-center my-20">
-      <div className="w-[80%] bg-[#F5F5DC] rounded-3xl">
-        <div className="flex flex-col w-full h-full p-20">
-          <SubTitleFont className="text-4xl md:text-5xl lg:text-7xl text-[#3B2F2F]">
+    <div className="w-full h-full flex items-center justify-center my-8 md:my-12 lg:my-20">
+      <div className="w-[90%] md:w-[80%] bg-[#F5F5DC] rounded-3xl">
+        <div className="flex flex-col w-full h-full p-8 md:p-12 lg:p-20">
+          <SubTitleFont className="text-[clamp(2rem,2.5vw+1.5rem,4.5rem)] text-[#3B2F2F]">
             Hello there, I&apos;m Roy
           </SubTitleFont>
-          <div className="flex flex-col lg:flex-row justify-between py-4">
+          <div className="flex flex-col md:flex-row justify-between py-4">
             <div>
-              <em className="text-2xl md:text-3xl lg:text-4xl border-2 border-dashed  border-black p-2 rounded-full">
+              <em className="text-[clamp(1.2rem,1.05vw+0.99rem,2.25rem)] border-2 border-dashed  border-black p-2 rounded-full">
                 Also Runanka
               </em>
             </div>
 
-            <p className="text-lg md:text-xl lg:text-2xl pt-8 w-1/2">
+            <p className="text-lg md:text-xl lg:text-2xl py-8 w-full md:w-1/2">
               I am a software developer with a passion for creating and building
               things. I love to learn new things and am always looking for new
               challenges. I have experience with a variety of technologies
