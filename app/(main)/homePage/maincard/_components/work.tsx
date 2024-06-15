@@ -35,11 +35,11 @@ export default function Work() {
         description="KanbanWeb is a collaborative, web-based kanban board application. It features user authentication, organization management, board management, and collaboration."
         github="https://github.com/Runanka/kanbanweb"
         components={[
-          <SiTailwindcss />,
-          <SiNextdotjs />,
-          <SiReact />,
-          <SiPostgresql />,
-          <SiPrisma />,
+          <SiTailwindcss key="tailwind" />,
+          <SiNextdotjs key="nextjs" />,
+          <SiReact key="react" />,
+          <SiPostgresql key="postgresql" />,
+          <SiPrisma key="prisma" />,
         ]}
       />
       <WorkTile
@@ -47,10 +47,10 @@ export default function Work() {
         description="Trip Planning Web App - Plan your personalized trip based on the current weather in any city using OpenAI GPT-3.5-Turbo model."
         github="https://github.com/Runanka/Holiday-Plan"
         components={[
-          <IoLogoCss3 />,
-          <IoLogoJavascript />,
-          <IoLogoNodejs />,
-          <IoLogoHtml5 />,
+          <IoLogoCss3 key="css3" />,
+          <IoLogoJavascript key="js" />,
+          <IoLogoNodejs key="nodejs" />,
+          <IoLogoHtml5 key="html" />,
         ]}
       />
       <WorkTile
@@ -58,13 +58,22 @@ export default function Work() {
         description="A server-client chat application that features a GUI of a messenger, and is built using C++ and QT."
         github="https://github.com/Runanka/Chat-Application"
         components={[
-          <span className="font-bold text-[clamp(1rem,0.5vw+0.9rem,1.5rem)]">
+          <span
+            className="font-bold text-[clamp(1rem,0.5vw+0.9rem,1.5rem)]"
+            key="c++"
+          >
             C++
           </span>,
-          <span className="font-bold text-[clamp(1rem,0.5vw+0.9rem,1.5rem)]">
+          <span
+            className="font-bold text-[clamp(1rem,0.5vw+0.9rem,1.5rem)]"
+            key="qt"
+          >
             QT
           </span>,
-          <span className="font-bold text-[clamp(1rem,0.5vw+0.9rem,1.5rem)]">
+          <span
+            className="font-bold text-[clamp(1rem,0.5vw+0.9rem,1.5rem)]"
+            key="qml"
+          >
             QML
           </span>,
         ]}
