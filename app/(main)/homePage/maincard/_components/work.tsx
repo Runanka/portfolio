@@ -18,6 +18,7 @@ import {
 
 import { SubTitleFont } from "@/app/(main)/_components/fonts";
 import { useState } from "react";
+import { StaggeredText } from "../../_components/animation";
 
 export default function Work() {
   return (
@@ -27,7 +28,7 @@ export default function Work() {
       </div>
       <div className="flex justify-start">
         <SubTitleFont className="text-[clamp(2rem,2.5vw+1.5rem,4.5rem)] text-[#3B2F2F] mb-8 md:mb-16 lg:mb-20">
-          Projects I&apos;ve worked on
+          <StaggeredText text="Projects I've worked on" />
         </SubTitleFont>
       </div>
       <WorkTile

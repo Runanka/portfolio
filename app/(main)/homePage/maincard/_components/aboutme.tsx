@@ -1,5 +1,6 @@
 import { SubTitleFont } from "@/app/(main)/_components/fonts";
 import Image from "next/image";
+import { StaggeredText } from "../../_components/animation";
 
 export default function AboutMe() {
   return (
@@ -7,7 +8,7 @@ export default function AboutMe() {
       <div className="w-[90%] md:w-[80%] bg-[#F5F5DC] rounded-3xl">
         <div className="flex flex-col w-full h-full p-8 md:p-12 lg:p-20">
           <SubTitleFont className="text-[clamp(2rem,2.5vw+1.5rem,4.5rem)] text-[#3B2F2F]">
-            Hello there, I&apos;m Roy
+            <StaggeredText text="Hello there, I'm Roy" />
           </SubTitleFont>
           <div className="flex flex-col md:flex-row justify-between py-4">
             <div>
