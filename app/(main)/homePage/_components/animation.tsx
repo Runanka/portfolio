@@ -37,7 +37,7 @@ export const StaggeredText = ({
   };
 
   return (
-    <Wrapper className={cn(className, "overflow-hidden")}>
+    <Wrapper className={cn(className)}>
       <span className="sr-only">{text}</span>
       <motion.span
         ref={ref}
@@ -49,7 +49,7 @@ export const StaggeredText = ({
         }}
       >
         {text.split(" ").map((word, index, array) => (
-          <span key="index" className="inline-block">
+          <span key="index" className="inline-block overflow-clip">
             {word.split("").map((char, index) => (
               <motion.span
                 variants={StaggerTextVariants}

@@ -16,9 +16,9 @@ export default function MainCard() {
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeInOut", delay: 1.5 }}
+      initial={{ y: "25vw" }}
+      animate={{ y: "0" }}
+      transition={{ duration: 0.5, ease: "easeOut", delay: 1 }}
       className="z-20 relative w-[90vw] max-w-[100rem]  h-full bg-[#D2B48C]  flex flex-col items-center mb-[45vw]"
     >
       <div className="absolute w-full -translate-y-[99%]">
